@@ -14,11 +14,10 @@ export const Landing = () => {
             <Grid item xs={12} md={6} lg={6}>
                 <div style={{marginTop: 100}}>
                     <Typography variant={"h2"}>
-                        Coursera Admin
+                    CodeCraft Academy Admin
                     </Typography>
                     <Typography variant={"h5"}>
-                        A place to learn, earn and grow
-                    </Typography>
+                    Empowering Tech Enthusiasts                    </Typography>
                     {!userLoading && !userEmail && <div style={{display: "flex", marginTop: 20}}>
                         <div style={{marginRight: 10}}>
                             <Button
@@ -43,8 +42,8 @@ export const Landing = () => {
                 <div>
                 </div>
             </Grid>
-            <Grid item xs={12} md={6} lg={6}  style={{marginTop: 20}}>
-                <img src={"/class.jpeg"} width={"100%"} />
+            <Grid item xs={12} md={6} lg={6}  style={{marginTop: 1}}>
+                <img src={"/class.png"} width={"100%"} />
             </Grid>
         </Grid>
     </div>

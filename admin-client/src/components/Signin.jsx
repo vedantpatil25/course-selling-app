@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import {Card, Typography} from "@mui/material";
 import {useState} from "react";
 import axios from "axios";
+import { BASE_URL } from "../config.js";
 import {useNavigate} from "react-router-dom";
 import {useSetRecoilState} from "recoil";
 import {userState} from "../store/atoms/user.js";
@@ -21,15 +22,14 @@ function Signin() {
                 justifyContent: "center"
             }}>
                 <Typography variant={"h6"}>
-                Welcome to Coursera. Sign up below
+                Welcome to Coursera. Sign in below
                 </Typography>
             </div>
         <div style={{display: "flex", justifyContent: "center"}}>
             <Card varint={"outlined"} style={{width: 400, padding: 20}}>
                 <TextField
-                    onChange={(evant11) => {
-                        let elemt = evant11.target;
-                        setEmail(elemt.value);
+                    onChange={(event) => {
+                        setEmail(event.target.value);
                     }}
                     fullWidth={true}
                     label="Email"
@@ -50,27 +50,18 @@ function Signin() {
                 <Button
                     size={"large"}
                     variant="contained"
-                    onClick={async () => {
-                        const res = await axios.post(`${BASE_URL}/admin/login`, {
+                    onClick={async() => {
+                        const response = await axios.post(`${BASE_URL}/admin/login`, {
                             username: email,
                             password: password
-                        }, {
-                            headers: {
-                                "Content-type": "application/json"
-                            }
-                        });
-                        const data = res.data;
-
-                        localStorage.setItem("token", data.token);
-                        // window.location = "/"
-                        setUser({
-                            userEmail: email,
-                            isLoading: false
                         })
+                        let data = response.data;
+                        localStorage.setItem("token", data.token);
+                        setUser({userEmail: email, isLoading: false})
                         navigate("/courses")
                     }}
 
-                > Signin</Button>
+                > SignIn</Button>
             </Card>
         </div>
     </div>
