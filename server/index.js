@@ -4,10 +4,19 @@ const cors = require('cors');
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");
 
+var corsOptions = {
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200
+}
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.get('/', (req, res) => {   
+    res.send('Hello World!')
+});
 
 app.use("/admin", adminRouter)
 app.use("/user", userRouter)
